@@ -4,12 +4,12 @@ import "openzeppelin-zos/contracts/ownership/Ownable.sol";
 import "openzeppelin-zos/contracts/lifecycle/Pausable.sol";
 import "openzeppelin-zos/contracts/math/SafeMath.sol";
 import "openzeppelin-zos/contracts/AddressUtils.sol";
-import "zos-lib/contracts/migrations/Migratable.sol";
+//import "zos-lib/contracts/migrations/Migratable.sol";
 
 import "./MarketplaceStorage.sol";
 
 
-contract Marketplace is Migratable, Ownable, Pausable, MarketplaceStorage {
+contract Marketplace is Ownable, Pausable, MarketplaceStorage {
   using SafeMath for uint256;
   using AddressUtils for address;
 
@@ -56,7 +56,7 @@ contract Marketplace is Migratable, Ownable, Pausable, MarketplaceStorage {
     address _owner
   )
     public
-    isInitializer("Marketplace", "0.0.1")
+  //  isInitializer("Marketplace", "0.0.1")
   {
 
     // msg.sender is the App contract not the real owner. Calls ownable behind the scenes...sigh

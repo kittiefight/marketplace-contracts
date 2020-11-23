@@ -9,7 +9,7 @@ import "openzeppelin-zos/contracts/AddressUtils.sol";
 import "./MarketplaceStorage.sol";
 
 
-contract Marketplace is Ownable, Pausable, MarketplaceStorage {
+contract MarketplaceV0 is Ownable, Pausable, MarketplaceStorage {
   using SafeMath for uint256;
   using AddressUtils for address;
 
@@ -36,18 +36,17 @@ contract Marketplace is Ownable, Pausable, MarketplaceStorage {
 
 
   /**
-    * @dev used to acts a constructor using migratable contract
+    * @dev initializeMarketplace
     * @param _acceptedToken - Address of the ERC20 accepted for this marketplace
     *
      */
-  function Marketplace(
+  function initializeMarketplace(
     address _acceptedToken,
     address _owner
   )
     public
   //  isInitializer("Marketplace", "0.0.1") relic of migratable contract
   {
-
     // msg.sender is the App contract not the real owner. Calls ownable behind the scenes...sigh
     require(_owner != address(0), "Invalid owner");
     //Pausable.initialize(_owner);   relic of migratable contract

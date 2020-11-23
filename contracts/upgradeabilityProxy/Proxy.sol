@@ -3,6 +3,7 @@ pragma solidity ^0.4.24;
 import "./marketplace/MarketplaceStorage.sol";
 
 contract Proxy is MarketplaceStorage{
+  
 
   /**
   * @dev Tells the address of the implementation where every call will be delegated.

@@ -50,8 +50,8 @@ contract MarketplaceV0 is Ownable, Pausable, MarketplaceStorage {
     // msg.sender is the App contract not the real owner. Calls ownable behind the scenes...sigh
     require(_owner != address(0), "Invalid owner");
     //Pausable.initialize(_owner);   relic of migratable contract
-    // initializes Ownable contract with parameter _owner as owner not msg.sender like Pausable.initialize
-    Ownable owner = new Ownable(_owner);
+    // transfers  ownership from this.address to owner as Pausable.initialize
+    Ownable.transferOwnership(_owner);
     require(_acceptedToken.isContract(), "The accepted token address must be a deployed contract");
     acceptedToken = ERC20Interface(_acceptedToken);
   }
